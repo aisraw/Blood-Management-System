@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can I Give Blood?</title>
+    <link rel="stylesheet" href="/static/css/canigiveblood.css">
+</head>
+<body>
+    <header>
+        <h1>Can I Give Blood?</h1>
+        <p>Learn about eligibility requirements and health conditions.</p>
+    </header>
+    <div class="go-back-container">
+        <a href="{% url 'home' %}" class="go-back-button">
+            <i class="fas fa-arrow-left"></i> Go Back
+        </a>
+    </div>
+    <main>
+        <section class="content-section">
+            <h2>Eligibility Requirements</h2>
+            <p>To donate blood, you must meet the following criteria:</p>
+            <ul>
+                <li>Be at least 17 years old (or 16 with parental consent).</li>
+                <li>Weight at least 50 kg (110 pounds).</li>
+                <li>Be in good general health.</li>
+                <li>Not have donated blood in the last 8 weeks.</li>
+            </ul>
+        </section>
+        <section class="content-section">
+            <h2>Health Conditions</h2>
+            <p>Certain conditions may affect your eligibility:</p>
+            <ul>
+                <li>Recent infections or illnesses.</li>
+                <li>Chronic diseases like diabetes or heart disease.</li>
+                <li>Travel to high-risk areas for infectious diseases.</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>Check Your Eligibility</h2>
+            <p>Use our interactive tool to see if you can donate:</p>
+            <button id="showEligibilityForm">Check Eligibility</button>
+            <div class="eligibility-form">
+                <div class="form-group">
+                    <label for="age">Your Age:</label>
+                    <input type="number" id="age" placeholder="Enter your age" min="16" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="weight">Your Weight (in kgs):</label>
+                    <input type="number" id="weight" placeholder="Enter your weight" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="health">Are you in good general health?</label>
+                    <select id="health" required>
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastDonation">Last Donation (in weeks):</label>
+                    <input type="number" id="lastDonation" placeholder="Enter weeks since last donation" min="0" required>
+                </div>
+                
+                <button id="checkEligibility">Submit</button>
+            </div>
+            <div id="eligibilityResult" class="eligibility-result hidden"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy;2025 A & W Innovation.</p>
+    </footer>
+    <script src="/static/js/canigiveblood.js"></script>
+</body>
+</html>

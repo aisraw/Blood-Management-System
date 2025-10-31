@@ -1,0 +1,237 @@
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align:center; color: #B22222; margin-top: 40px;">Control Panel</h1>
+
+<div class="floating-blood-groups">
+  <span>A+</span><span>B-</span><span>O+</span><span>AB+</span><span>A-</span><span>B+</span><span>O-</span><span>AB-</span>
+</div>
+
+<div class="container">
+  <aside>
+    <div class="top">
+      <div class="logo">
+        <h2><span class="material-symbols-sharp">water_drop</span>A & &nbsp;<span class="danger">W</span></h2>
+      </div>
+      <div class="close" id="close-btn">
+        <span class="material-symbols-sharp">close</span>
+      </div>
+    </div>
+    <div class="sidebar">
+      <a href="#" id="dashboard-toggle">
+        <span class="material-symbols-sharp">dashboard</span>
+        <h3>Dashboard</h3>
+        <span class="material-symbols-sharp toggle-icon">expand_more</span>
+      </a>
+      <div class="sidebar-items">
+        <a href="{% url 'view_donor' %}" class="active">
+          <span class="material-symbols-sharp">person</span>
+          <h3>Donor</h3>
+        </a>
+        <a href="{% url 'add_people' %}">
+          <span class="material-symbols-sharp">groups</span>
+          <h3>People</h3>
+        </a>
+        <a href="{% url 'view_appointment' %}">
+          <span class="material-symbols-sharp">event</span>
+          <h3>Appointments</h3>
+        </a>
+        <a href="{% url 'bloodavailability' %}">
+          <span class="material-symbols-sharp">list_alt_check</span>
+          <h3>Blood Availability</h3>
+        </a>
+        <a href="{% url 'analytics' %}">
+          <span class="material-symbols-sharp">monitoring</span>
+          <h3>Analytics</h3>
+        </a>
+        <a href="{% url 'request' %}">
+          <span class="material-symbols-sharp">mail</span>
+          <h3>Requests</h3>
+          <span class="message-count">26</span>
+        </a>
+        <a href="{% url 'bloodstorage' %}">
+          <span class="material-symbols-sharp">inventory</span>
+          <h3>Blood Storage</h3>
+        </a>
+        <a href="{% url 'addblood' %}">
+          <span class="material-symbols-sharp">heart_plus</span>
+          <h3>Add Blood</h3>
+        </a>
+        <a href="{% url 'reciept' %}" id="reports-link">
+          <span class="material-symbols-sharp">report</span>
+          <h3>Reports</h3>
+        </a>
+        <a href="{% url 'setting' %}">
+          <span class="material-symbols-sharp">settings</span>
+          <h3>Settings</h3>
+        </a>
+        <a href="{% url 'home' %}">
+          <span class="material-symbols-sharp">logout</span>
+          <h3>Logout</h3>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <h1>Dashboard</h1>
+    <div class="date">
+      <input type="date" />
+    </div>
+
+    <div class="insights">
+      <div class="sales">
+        <span class="material-symbols-sharp">analytics</span>
+        <div class="middle">
+          <div class="left">
+            <h3>Total Donation</h3>
+            <h1 id="total-donation">0</h1>
+          </div>
+          <div class="progress">
+            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+            <div class="number"><p>81%</p></div>
+          </div>
+        </div>
+        <small class="text-muted">Last 24 Hours</small>
+      </div>
+
+      <div class="expenses">
+        <span class="material-symbols-sharp">finance</span>
+        <div class="middle">
+          <div class="left">
+            <h3>Total Requests</h3>
+            <h1 id="total-requests">0</h1>
+          </div>
+          <div class="progress">
+            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+            <div class="number"><p>62%</p></div>
+          </div>
+        </div>
+        <small class="text-muted">Last 24 Hours</small>
+      </div>
+
+      <div class="income">
+        <span class="material-symbols-sharp">show_chart</span>
+        <div class="middle">
+          <div class="left">
+            <h3>Benefactor</h3>
+            <h1 id="total-benefactors">0</h1>
+          </div>
+          <div class="progress">
+            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+            <div class="number"><p>44%</p></div>
+          </div>
+        </div>
+        <small class="text-muted">Last 24 Hours</small>
+      </div>
+    </div>
+
+    <div class="recent-orders">
+      <h2>Recent Requests</h2>
+      <table>
+        <thead>
+          <tr><th>Blood Group</th><th>Bag Number</th><th>Payment</th><th>Status</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          <!-- Orders from orders.js -->
+        </tbody>
+      </table>
+      <a href="#" class="show-all"><span>S</span><span>h</span><span>o</span><span>w</span><span> </span><span>A</span><span>l</span><span>l</span></a>
+      <div class="expanded-data" style="display: none;">
+        <div class="chart-container">
+          <canvas id="requestsChart" width="400" height="300"></canvas>
+          <canvas id="donationsChart" width="400" height="300"></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="right">
+    <div class="top">
+      <button id="menu-btn"><span class="material-symbols-sharp">menu</span></button>
+      <div class="theme-toggler">
+        <span class="material-symbols-sharp active">light_mode</span>
+        <span class="material-symbols-sharp">dark_mode</span>
+      </div>
+      <div class="profile">
+        <div class="info">
+          <p>Hey, <b>Afia Baby</b></p>
+          <small class="text-muted">Admin</small>
+        </div>
+        <div class="profile-photo header-profile-photo">
+          <img src="/static/baby.jpeg" alt="Afia Baby">
+        </div>
+      </div>
+    </div>
+
+    <div class="recent-updates">
+      <h2>Recent Updates</h2>
+      <div class="updates">
+        <div class="update">
+          <div class="profile-photo"><img src="/static/afi.webp" alt="Profile Photo"></div>
+          <div class="message"><p><b>Tasnim Anisa</b> received emergency donor service.</p><small>2 Minutes Ago</small></div>
+        </div>
+        <div class="update">
+          <div class="profile-photo"><img src="/static/adi.webp" alt="Profile Photo"></div>
+          <div class="message"><p><b>Mutsuddi Arpa</b> received 3 bags of O-ve blood.</p><small>1 Minute Ago</small></div>
+        </div>
+        <div class="update">
+          <div class="profile-photo"><img src="/static/wa.webp" alt="Profile Photo"></div>
+          <div class="message"><p><b>AisWar</b> paid for transfusion service.</p><small>2 Minutes Ago</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sales-analytics">
+      <h2>Management Analytics</h2>
+      <div class="item online">
+        <div class="icon"><span class="material-symbols-sharp">home_health</span></div>
+        <div class="right"><div class="info"><h3>ONLINE REQUESTS</h3><small>Last 24 Hours</small></div><h5 class="/static/success">+59%</h5><h3>3849</h3></div>
+      </div>
+      <div class="item offline">
+        <div class="icon"><span class="material-symbols-sharp">diversity_2</span></div>
+        <div class="right"><div class="info"><h3>OFFLINE REQUESTS</h3><small>Last 24 Hours</small></div><h5 class="danger">-17%</h5><h3>1100</h3></div>
+      </div>
+      <div class="item customers">
+        <div class="icon"><span class="material-symbols-sharp">face_3</span></div>
+        <div class="right"><div class="info"><h3>NEW PATIENTS</h3><small>Last 24 Hours</small></div><h5 class="success">+25%</h5><h3>849</h3></div>
+      </div>
+      <div class="item add-product">
+        <div><span class="material-symbols-sharp">add</span><a href="addblood.html"><h3>Add Blood</h3></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reports-popup-overlay" id="reportsPopup">
+  <div class="reports-popup">
+    <div class="popup-header">
+      <h3><span class="material-symbols-sharp">water_drop</span>Blood Management Reports</h3>
+      <span class="close-popup">&times;</span>
+    </div>
+    <div class="popup-content">
+      <div class="report-option"><span class="material-symbols-sharp">monitoring</span><div><h4>Inventory Summary</h4><p>Current stock levels</p></div></div>
+      <div class="report-option"><span class="material-symbols-sharp">show_chart</span><div><h4>Donation Trends</h4><p>Monthly analysis</p></div></div>
+      <div class="report-option"><span class="material-symbols-sharp">emergency</span><div><h4>Critical Shortages</h4><p>Urgent needs</p></div></div>
+      <div class="report-option"><span class="material-symbols-sharp">group</span><div><h4>Donor Analytics</h4><p>Demographic insights</p></div></div>
+      <div class="report-option"><span class="material-symbols-sharp">local_hospital</span><div><h4>Hospital Usage</h4><p>Hospital-wise usage</p></div></div>
+      <div class="report-option"><span class="material-symbols-sharp">download</span><div><h4>Export Data</h4><p>Download options</p></div></div>
+    </div>
+    <div class="popup-footer">
+      <button class="btn print-all"><span class="material-symbols-sharp">print</span>Print All Reports</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/orders.js' %}"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

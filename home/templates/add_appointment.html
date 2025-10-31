@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment</title>
+  <link rel="stylesheet" href="{% static 'css/bookappoinment.css' %}">
+</head>
+<body>
+
+  {% if error == "no" %}
+    <script>
+      alert('Appointment saved successfully');
+      window.location = "{% url 'view_appointment' %}";
+    </script>
+  {% elif error == "yes" %}
+    <script>
+      alert('Something went wrong. Please try again.');
+    </script>
+  {% endif %}
+
+  <div class="container">
+    <h2>Appointment Form</h2>
+    <form method="POST">
+      {% csrf_token %}
+
+      <!-- Donor Dropdown -->
+      <label>Donor</label>
+      <select name="donor" required>
+        <option value="">Select Donor</option>
+        {% for d in donors %}
+          <option value="{{ d.id }}">{{ d.name }}</option>
+        {% endfor %}
+      </select>
+
+      <!-- Recipient Dropdown -->
+      <label>Recipient</label>
+      <select name="user" required>
+        <option value="">Select Recipient</option>
+        {% for p in people %}
+          <option value="{{ p.id }}">{{ p.first_name }} {{ p.surname }}</option>
+          {# OR simply use {{ p }} if __str__ is defined as full name #}
+          {# <option value="{{ p.id }}">{{ p }}</option> #}
+        {% endfor %}
+      </select>
+
+      <label>Full Name</label>
+      <input type="text" name="full_name" required>
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone" required>
+
+      <label>Date</label>
+      <input type="date" name="date" required>
+
+      <label>Time</label>
+      <input type="time" name="time" required>
+
+      <label>Location</label>
+      <input type="text" name="location" required>
+
+      <label>Blood Group</label>
+      <select name="blood_group" required>
+        <option value="">Select</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option>
+        <option>AB+</option><option>AB-</option>
+      </select>
+
+      <label>Blood Component</label>
+      <select name="blood_component" required>
+        <option value="">Select</option>
+        <option>Packed Cell</option>
+        <option>Cryoprecipitated (Factor-VIII)</option>
+        <option>Platelet Concentrates</option>
+        <option>Fresh Plasma</option>
+        <option>Washed Red Cell</option>
+        <option>Fresh Frozen Plasma</option>
+        <option>Leucocyte Poor Blood</option>
+      </select>
+
+      <label>Number of Bags</label>
+      <input type="number" name="number_of_bags" min="1" required>
+
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+
+</body>
+</html>

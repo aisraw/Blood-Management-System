@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% include 'navigation.html' %}
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Blood Bank & Donation System</h1>
+            <p>Every drop of blood you donate is a lifeline for someone
+                in need—join us in saving lives today.
+                </p>
+           <a href="{% url 'readmore' %}" class="btn2">Read More </a>
+        </div>
+        <div class="hero-image">
+        </div>
+    </section>
+    <section class="skin-glow-section" id="services">
+      <div class="card-container">
+        <div class="card">
+          <div class="icon">
+            <img src="static/blooddrop.svg" alt="Can I give blood?"/><br>
+          </div>
+          <h3>Can I give blood?</h3>
+          <p>Check eligibility criteria for blood donation.</p>
+          <a href="{% url 'canigiveblood' %}" class="learn-more">Learn More<i class="ri-arrow-right-line"></i></a>
+        </div>
+
+        <div class="card">
+          <div class="icon">
+            <img src="static/pointer.svg" alt="Where to give blood" />
+          </div>
+          <h3>Where to give blood</h3>
+          <p>Locate nearby blood donation centers.</p>
+         <a href="{% url 'wheretogiveblood' %}" class="learn-more">Learn More<i class="ri-arrow-right-line"></i></a>
+        </div>
+
+        <div class="card">
+          <div class="icon">
+            <i class="fa-solid fa-droplet" style="color: #932a2a; font-size: 1.8rem;"></i>
+          </div>
+          <h3>Blood supply levels</h3>
+          <p>Track real-time blood inventory status.</p>
+          <a href="{% url 'bloodsupplylevel' %}" class="learn-more">Learn More<i class="ri-arrow-right-line"></i></a>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img src="static/medicine.svg" alt="Iron deficiency" />
+          </div>
+          <h3>Iron deficiency</h3>
+          <p>Understand iron requirements for donors.</p>
+          <a href="{% url 'iron-deficiency' %}" class="learn-more">Learn More<i class="ri-arrow-right-line"></i></a>
+        </div>
+        <div class="card">
+            <div class="icon">
+              <img src="static/glass.svg" alt="Prepare and aftercare" />
+            </div>
+            <h3>Prepare and aftercare</h3>
+            <p>Follow pre- and post-donation guidelines.</p>
+            <a href="{% url 'prepareandaftercare' %}" class="learn-more">Learn More<i class="ri-arrow-right-line"></i></a>
+          </div>
+          <div class="card">
+            <div class="icon">
+              <img src="static/bloodbag.svg" alt="How to give blood" />
+            </div>
+            <h3>How to give blood</h3>
+            <p>Learn the blood donation process step-by-step.</p>
+            <a href="{% url 'howtogiveblood' %}" class="learn-more">Learn More<i class="ri-arrow-right-line"></i></a>
+          </div>
+      </div>
+    </section>
+    <section class="article-section" id="article">
+      <h1>Let's Make A Positive Difference</h1><br>
+      <P>Every day in the world's poorest countries, people die because of a
+          shortage of blood. A & W helps blood collectors in these countries by
+          providing money, equipment, training and other forms of support –
+          including launching voluntary blood donation programs.
+        </p><br>
+      <div class="article-container">
+          <div class="article-card">
+              <img src="static/2nd.jpeg" alt="Article Image 1">
+              <div class="article-content">
+                  <h3>Inspiring Hope, Igniting Change</h3>
+                  <a href="{% url 'inspiring-hope' %}" class="learn-more1">Learn More<i class="ri-arrow-right-line"></i></a>
+              </div>
+          </div>
+          <div class="article-card">
+              <img src="static/3rd.jpeg" alt="Article Image 2">
+              <div class="article-content">
+                  <h3>Volunteer Opportunities</h3>
+                  <a href="{% url 'volunteer' %}" class="learn-more1">Learn More<i class="ri-arrow-right-line"></i></a>
+              </div>
+          </div>
+          <div class="article-card">
+              <img src="static/4th.jpeg" alt="Article Image 3">
+              <div class="article-content">
+                  <h3>Outreach Program</h3>
+                  <a href="{% url 'outreach' %}" class="learn-more1">Learn More<i class="ri-arrow-right-line"></i></a>
+              </div>
+          </div>
+          <div class="article-card">
+              <img src="static/5th.jpeg" alt="Our Mission">
+              <div class="article-content">
+                  <h3>Our Mission</h3>
+                  <a href="{% url 'mission' %}" class="learn-more1">Learn More<i class="ri-arrow-right-line"></i></a>
+              </div>
+          </div>
+      </div>
+    </section>
+    <footer>
+      <div class="foot-panel1" id="backToTop" role="button" tabindex="0">Back to Top</div>
+        <div class="foot-panel2">
+          <ul>
+            <p><a href="{% url 'aboutus' %}">ABOUT US</p></a>
+            <a href="{% url 'purpose' %}">Purpose & Network</a>
+            <a href="{% url 'whatwespecializein' %}">What We Specialize In</a>
+            <a href="{% url 'faq' %}">FAQs</a>
+            <a href="{% url 'partners' %}">Our Partners</a>
+            <a href="{% url 'careers' %}">Careers</a>
+          </ul>
+          <ul>
+            <p>NEWS & BLOGS</p>
+            <a href="{% url 'news' %}">News</a>
+            <a href="{% url 'blog' %}">Blog</a>
+          </ul>
+          <ul>
+            <p>RESOURCES</p>
+            <a href="{% url 'add_donor' %}">Donor Forms</a>
+            <a href="{% url 'health-history' %}">Health History Questionnaire</a>
+            <a href="{% url 'rewards-program' %}">Rewards Program</a>
+          </ul>
+          <ul>
+            <p>Contact Us</p>
+            <div class="footercontainer">
+              <div class="socialicon">
+                <a href="https://www.facebook.com/"
+                  ><i class="fa-brands fa-facebook"></i
+                ></a>
+                <a href="https://www.instagram.com/"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+                <a href="https://x.com/AhmedWarisa"
+                  ><i class="fa-brands fa-twitter"></i
+                ></a>
+                <a href="https://www.youtube.com/@warisaahmed"
+                  ><i class="fa-brands fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+          </ul>
+        </div>
+        <div class="foot-panel3">
+          <div class="logo"></div>
+        </div>
+        <div class="foot-panel4">
+          <a href="#">Conditions of Use</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Your Ads Privacy Choices</a>
+        </div>
+        <div class="copy-right">
+          Copyright © 2025 Blood Services Management (BSM), DGHS. All rights
+          reserved.
+        </div>
+    </footer>
+  
+    <div id="passwordModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000;">
+      <div style="background:white; width:300px; margin:100px auto; padding:20px; border-radius:5px; text-align:center;">
+        <h3>Admin Dashboard</h3>
+        <p>Enter password to continue:</p>
+        <input type="password" id="adminPass" style="width:100%; padding:8px; margin:10px 0;">
+        <button id="submitPass" style="background:#7a3a4e; color:white; border:none; padding:8px 15px; border-radius:4px; cursor:pointer;">Submit</button>
+        <p id="passError" style="color:red; display:none;">Incorrect password!</p>
+      </div>
+    </div>
+    
+    <div id="searchModal" class="search-modal">
+      <div class="search-modal-content">
+          <div class="search-header">
+              <h3>What are you looking for 👀</h3>
+              <button id="closeSearchModal" class="search-close-btn">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="search-input-container">
+              <input type="text" id="searchInput" placeholder="Search for blood types, donation info, locations and more....">
+              <i class="fas fa-search"></i>
+          </div>
+          <div id="searchResults" class="search-results">
+              <div class="search-placeholder">
+                  <p>Type to search for information</p>
+              </div>
+          </div>
+      </div>
+  </div>
+    {% endblock content %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const backToTop = document.getElementById("backToTop");
+    if (backToTop) {
+      backToTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+  });
+</script>
+{% endblock extra_js %}
+
+  
